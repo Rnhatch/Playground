@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Working with Circles</title>
+    <script type="text/javascript" src="../mbostock-d3-7d2ce55/d3.js"></script>
+	<style type="text/css">
+		
+	</style>
+
+  </head>
+  <body>
+
+		<script type="text/javascript">
+
+		    var h = 1000,
+				w = 500;
+			  c = d3.scale.linear().domain([0,1]).range(["hsl(10, 50%, 50%)", "hsl(60, 100%, 50%)"]).interpolate(d3.interpolateHsl)
+            
+
+			var data = []
+			for (i=0; i < 70; i++) {
+				data.push({"x": [(i*10)+50], "y": [(i* -10) + 750]})
+			};
+						
+			var vis = d3.select("body")
+				.append("svg")
+				.attr("width", 1000)
+				.attr("height", 800);
+
+            var lines = vis.selectAll ("line")
+                .data(data)
+               .enter();
+               
+               lines.append("line")
+                .attr("x1", 50)
+                .attr("y1", function(d) { return d.x; })
+                .attr("x2", 50)
+                .attr("y2", 50)
+                .attr("stroke", function() { return c(Math.random()) })
+                .attr("stroke-width", 3)
+            .transition()
+                .duration (6000)
+             .ease("elastic", 1, .2)
+            .attr("x2", function(d) { return d.y; });
+
+
+               lines.append("line")
+                .attr("x1", 750)
+                .attr("y1", function(d) { return d.y; })
+                .attr("x2", 750)
+                .attr("y2", 750)
+                .attr("stroke", function() { return c(Math.random()) })
+                .attr("stroke-width", 3)
+            .transition()
+                .duration(6000)
+               .ease("elastic", 1, .2)
+               .attr("x2", function(d) { return d.x; });
+
+
+
+               lines.append("line")
+                .attr("x1", 50)
+                .attr("y1", 750)
+                .attr("x2", function(d) { return d.y; })
+                .attr("y2", 750)
+                .attr("stroke", function() { return c(Math.random()) })
+                .attr("stroke-width", 3)
+            .transition()
+                .duration(6000)
+               .ease("elastic", 1, .2)
+               .attr("y1", function(d) { return d.y; });
+
+
+               lines.append("line")
+                .attr("x1", 750)
+                .attr("y1", 50)
+                .attr("x2", function(d) { return d.y; })
+                .attr("y2", 50)
+                .attr("stroke", function() { return c(Math.random()) })
+                .attr("stroke-width", 3)
+            .transition()
+                .duration(6000)
+               .ease("elastic", 1, .2)
+               .attr("y1", function(d) { return d.y; } );
+
+		</script>
+  </body>
+</html>

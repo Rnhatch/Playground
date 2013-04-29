@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Working with Circles</title>
+    <script type="text/javascript" src="../mbostock-d3-7d2ce55/d3.js"></script>
+	<style type="text/css">
+		
+	</style>
+
+  </head>
+  <body>
+
+		<script type="text/javascript">
+
+		    var h = 1000,
+				w = 500;
+        x = 1
+        y = 1
+        a = 2
+        b = 3
+        c1 = 200
+			  c = d3.scale.linear().domain([0,1]).range(["hsl(10, 50%, 50%)", "hsl(300, 100%, 50%)"]).interpolate(d3.interpolateHsl)
+            
+
+			var data = []
+			for (i=-50; i < 50; i++) //{phase = 2 * Math.PI * i / 50;
+				{data.push({ "x": [ i + 600 ], 
+                     "y": [ a * (i - b)^2 + c1 ]
+                  });
+			}
+						
+			var vis = d3.select("body")
+				.append("svg")
+				.attr("width", 755)
+				.attr("height", 755);
+
+/*            var lines = vis.selectAll ("line")
+                .data(data)
+               .enter();
+               
+               lines.append("line")
+                .attr("x1", function(d) { return d.x; })
+                .attr("y1", function(d) { return d.y; })
+                .attr("x2", 400)
+                .attr("y2", 0)
+                .attr("stroke", function() { return c(Math.random()*.25 ) })
+                .attr("stroke-width", 3)
+             .transition()
+                .duration (6000)
+                .ease("elastic", 1, .2)
+                .attr("x2", function(d) { return [d.y]*3; });
+*/
+
+            var circles = vis.selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle");
+
+            circles
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; })
+            .attr("r", 8)
+            .attr("fill", function() { return c(Math.random()*.25 ) })
+/*        .transition()
+            .duration(4000)
+//            .ease("elastic", 1, .2)
+            .ease("quad")
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+*/
+document.write (data.x, data.y);
+
+		</script>
+  </body>
+</html>

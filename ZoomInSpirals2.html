@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Working with Spirals</title>
+    <script type="text/javascript" src="../mbostock-d3-7d2ce55/d3.js"></script>
+	
+	<style type="text/css">
+		
+	</style>
+
+  </head>
+  <body>
+
+		<script type="text/javascript">
+
+		   var h = 500,
+			 w = 1000,
+			 r = 70
+        c = d3.scale.linear().domain([0,1]).range(["hsl(290, 0%, 0%)", "hsl(290, 0%, 50%)"]).interpolate(d3.interpolateHsl),
+        c2 = d3.scale.linear().domain([0,1]).range(["hsl(200, 100%, 50%)", "hsl(330, 100%, 50%)"]).interpolate(d3.interpolateHsl) ;
+
+						
+				
+            var data = []
+            for (var i = 0; i < 200; i++) {phase = 3 * Math.PI * i / 20;
+                data.push({ "x": [(w / 2) + r * Math.cos(phase)],        
+                            "y": [(h / 2) + r * Math.sin(phase)],
+                            "z": [(w / 2) +  r * Math.cos(phase) + 50],
+                            "za": [(h / 2) + r  * Math.sin(phase) + 50],
+                            "color": [(i / 2 *.01)],
+                            "p" : [i * 25]
+
+                });
+
+            }
+
+						
+		var vis = d3.select("body")
+				.append("svg")
+				.attr("width", 1500)
+				.attr("height", 800);
+		var lines = vis.selectAll("line")
+                .data(data)
+               .enter();
+
+			lines.append("line")
+                .attr("x1", 0 )    
+                .attr("y1", function(d) { return d.p; })
+                .attr("y2", 0 )
+                .attr("x2", 200 )
+                .attr("stroke", function(d) { return c2(d.color); })
+                .attr("stroke-width", 3)
+          	.transition()
+                .duration(4000)
+			 //         .ease("elastic", 1, .2)
+                .ease("quad")
+                .attr("x1", function(d) { return d.x; } )
+                .attr("y1", function(d) { return d.y; } )
+                .attr("x2", function(d) { return d.z; } )
+                .attr("y2", function(d) { return d.za; } )
+               ;
+
+
+     /*       var circles = vis.selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle");
+
+            circles
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; })
+    //        .attr("cy", 400)
+    //        .attr("cx", function(d) { return d.y; })
+            .attr("r", 6)
+           .attr("fill", function(d) { return c(d.color); })
+        //    .attr("fill", function() { return c2(i*.01) })
+                	.transition()
+                        .duration(4000)
+                       // .ease("elastic", 1, .2)
+                        .ease("sin")
+                        .attr("cx", function(d) { return d.z; })
+                        .attr("cy", function(d) { return d.za; });
+
+;            
+  */         		
+		</script>
+  </body>
+</html>
+
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>

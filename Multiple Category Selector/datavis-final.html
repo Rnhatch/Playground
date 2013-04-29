@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+	
+		<title>Data claim demo</title>
+		<style>
+			body,  
+			html {
+                margin:50 px;
+                padding:0;
+				background-color: #GGG;
+				font-family: sans-serif;
+				color: #000;
+				font-size: 10px;
+			}
+            #wrap {
+                width:1100px;
+                margin:0 auto;
+                     }
+
+            #main {
+                float:left;
+                width:800px;
+                }
+            #sidebar {
+                float:right;
+                width:200px;
+                }
+            #footer {
+                clear:both;
+            }
+			.coastertype-5
+			{
+				fill: #4C4A12;
+				color: #4C4A12;
+			}
+			.coastertype-2
+			{
+				fill: #989415;
+				color: #989415;
+			}
+			.coastertype-3
+			{
+				fill: #1E4559;
+				color: #1E4559;
+			}
+			.coastertype-4
+			{
+				fill: #7F7274;
+				color: #7F7274;
+			}
+			.coastertype-1
+			{
+				fill: #981C30;
+				color: #981C30;
+			}
+			.coastertype-6
+			{
+				fill: #fff;
+				color: #fff;
+			}
+			.coastertype-7
+			{
+				fill: #4B0612;
+				color: #4B0612;
+			}
+			.coastertype-8
+			{
+				fill: #1EAAE4;
+				color: #1EAAE4;
+			}
+			.coastertype-9
+			{
+				fill: #AD5E71;
+				color: #AD5E71;
+			}
+			.coastertype-10
+			{
+				fill: #000;
+				color: #000;
+			}
+			ul
+			{
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			div
+			{
+				float: left;
+				width: 200px;
+
+			}
+			.axis text
+			{
+				fill: #000;
+			}
+			.axis .domain
+			{
+				opacity: 0;
+			}
+			.tick
+			{
+				stroke: #000;
+			}
+		</style>
+
+		
+	</head>
+	<body>
+<div id="wrap">
+
+		<h1>Visualising claim data</h1>
+
+<div id="main">
+		<svg id="visualisation" width="800" height="600"></svg>
+</div>
+<form id="controls">
+<div id="sidebar">			
+				<h2>Diagnostic Category</h2>
+				<ul id="coaster-types">
+					<li><label><input type="checkbox" checked="checked" value="circulatory">Circulatory</label></li>
+					<li><label><input type="checkbox" checked="checked" value="digestive">Digestive</label></li>
+					<li><label><input type="checkbox" checked="checked" value="genitourinary">Genitourinary</label></li>
+					<li><label><input type="checkbox" checked="checked" value="infectious/parasitic">Infections/Parasitic</label></li>
+					<li><label><input type="checkbox" checked="checked" value="injury/posoining">Injury/Posioning</label></li>
+					
+				</ul>
+			
+</div>
+
+<div id="footer">
+			 <h2>X axis</h2>
+				<ul id="x-axis">
+					<li><label><input  type="radio" name="x-axis" value="Tenure">Tenure</label></li>
+					<li><label><input checked="checked" type="radio" name="x-axis" value="Age">Age</label></li>
+					<li><label><input type="radio" name="x-axis" value="TotalPTD">Total Paid</label></li>
+					<li><label><input type="radio" name="x-axis" value="Division">Division</label></li>				
+					<li><label><input type="radio" name="x-axis" value="date">Date</label></li>				
+				</ul>
+			</div>
+			<div>
+				<h2>Y axis</h2>
+				<ul id="y-axis">
+					<li><label><input type="radio" name="y-axis" value="Tenure">Tenure</label></li>
+					<li><label><input  type="radio" name="y-axis" value="Age">Age</label></li>
+					<li><label><input type="radio" name="y-axis" value="TotalPTD">Total Paid</label></li>
+					<li><label><input type="radio" name="y-axis" value="Division">Division</label></li>
+    				<li><label><input checked="checked" type="radio" name="y-axis" value="date">Date</label></li>						
+
+				</ul>
+			</div>
+			<div>
+				<h2>Radius</h2>
+				<ul id="r-axis">
+					<li><label><input type="radio" name="r-axis" value="Tenure">Tenure</label></li>
+					<li><label><input type="radio" name="r-axis" value="Age">Age</label></li>
+					<li><label><input checked="checked" type="radio" name="r-axis" value="TotalPTD">Total Paid</label></li>
+					<li><label><input type="radio" name="r-axis" value="Division">Division</label></li>
+					</ul>
+			</div>
+
+			<div>
+				<h2>Dataset</h2>
+				<ul>
+					<li>
+						<select id="dataset">
+							<option selected="selected" value="claims">Claims </option>
+							
+						</select>
+					</li>
+					<li><label><input type="checkbox" id="cull-dirty"> Cull dirty data</label></li>
+				</ul>
+
+		
+		</div>
+		</form>
+
+</div>		
+	</body>
+	<script src="d3/d3.js"></script>
+	<script src="d3/d3.csv.js"></script>
+	<script src="datavis-demo.js"></script>
+</html>

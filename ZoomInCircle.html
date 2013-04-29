@@ -17,12 +17,12 @@
 		    var h = 500,
 				w = 1000,
 			    r = 200
-			    x = d3.scale.linear().domain([0, 1]).range([screen.width / 2 - 500, screen.width / 2 + 700]),
+	/*		    x = d3.scale.linear().domain([0, 1]).range([screen.width / 2 - 500, screen.width / 2 + 700]),
 				y = d3.scale.linear().domain([0, 1]).range([0, h]),
 				y2 = d3.scale.linear().domain([0, 1]).range([h / 2 - 100, h / 2 + 300]),
 				//r = d3.scale.linear().domain([0, 1]).range([5, 50]),
 				//c = d3.scale.linear().domain([0, 1]).range(["hsl(200, 50%, 50%)", "hsl(330, 100%, 50%)"]).interpolate(d3.interpolateHsl)
-                c = d3.scale.linear().domain([0,1]).range(["hsl(100, 30%, 50%)", "hsl(250, 100%, 50%)"]).interpolate(d3.interpolateHsl),
+*/                c = d3.scale.linear().domain([0,1]).range(["hsl(100, 30%, 50%)", "hsl(250, 100%, 50%)"]).interpolate(d3.interpolateHsl),
                 c2 = d3.scale.linear().domain([0,1]).range(["hsl(290,0%, 40%)", "hsl(290, 0%, 90%)"]).interpolate(d3.interpolateHsl)
                 ;
 
@@ -58,7 +58,7 @@
                // .attr("stroke", function(d) { return d.c; })
                 .attr("stroke", function() { return c(Math.random()) })
                 .attr("stroke-width", 2)
-           	.transition()
+      	.transition()
                 .duration(4000)
 			//            .ease("elastic", 1, .2)
                 .ease("quad")
@@ -87,7 +87,7 @@
                         .attr("cx", function(d) { return d.z; })
                         .attr("cy", function(d) { return d.za; });
 
-;            
+;      */      
            		
 		</script>
   </body>
